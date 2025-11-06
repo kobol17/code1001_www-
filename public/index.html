@@ -1,151 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Code1001</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code1001: ISO 27001 Certification & NIS 2 Resilience Experts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Embedded CSS for single-page deployment -->
+    <style>
+        /* --- VISUALS BASED ON CODE1001 ASSUMED AESTHETIC --- */
+        :root {
+            --brand-primary: #1C2833;   /* Dark Slate/Header/Footer */
+            --brand-secondary: #00A6B2; /* Vibrant Cyan (Tech Accent/Links) */
+            --compliance-accent: #2ECC71; /* Strong Green (Trust/Compliance CTAs) */
+            --text-color: #333;
+            --dark-text: #1C2833;
+            --light-bg: #F4F6F6; /* Very light gray */
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Header/Navigation (Dark Tech Look) --- */
+        header {
+            background: var(--brand-primary);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Share Tech Mono', monospace; /* Tech Monospace Font */
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--brand-secondary); /* Cyan Logo */
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        
+        header nav a {
+            color: var(--white) !important;
+            transition: color 0.3s;
+        }
+        header nav a:hover {
+            color: var(--brand-secondary) !important;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            padding: 7rem 0;
+            background: var(--white);
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 3.2rem;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+
+        #hero p.subtitle {
+            font-size: 1.5rem;
+            color: var(--brand-primary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-group a {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s;
+        }
+
+        /* Use Compliance Accent for Primary CTA */
+        .cta-primary {
+            background: var(--compliance-accent);
+            color: var(--white);
+            border: 2px solid var(--compliance-accent);
+        }
+        .cta-primary:hover {
+            background: #25a05b;
+        }
+
+        /* Use Brand Secondary for Secondary CTA */
+        .cta-secondary {
+            background: none;
+            color: var(--brand-secondary);
+            border: 2px solid var(--brand-secondary);
+        }
+        .cta-secondary:hover {
+            background: var(--brand-secondary);
+            color: var(--white);
+        }
+
+        /* --- Badge Credibility Bar (Retained Dark Background) --- */
+        .credibility-bar {
+            background: var(--brand-primary);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+        .badge-list {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .badge-item {
+            text-align: center;
+            color: var(--white);
+            max-width: 250px;
+        }
+        .badge-item img {
+            width: 120px;
+            height: 120px;
+            background: var(--white);
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: contain;
+            /* Border uses Compliance Accent */
+            border: 4px solid var(--compliance-accent); 
+        }
+        .badge-item strong {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: var(--brand-secondary); /* Cyan Text */
+        }
+        .badge-item p {
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+        }
+
+        /* --- Services Section --- */
+        #services {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--brand-primary);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .service-pillars {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .pillar {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 5px solid var(--compliance-accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .pillar:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .pillar h3 {
+            color: var(--brand-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pillar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .pillar ul li {
+            padding: 0.6rem 0;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        .pillar ul li::before {
+            content: "•";
+            color: var(--compliance-accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* --- Why Us Section --- */
+        #why-us {
+            background: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+        .advantage-item {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-left: 5px solid var(--brand-secondary);
+            text-align: left;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .advantage-item h4 {
+            color: var(--brand-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            background: var(--brand-primary);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: var(--brand-secondary);
+            text-decoration: none;
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            #hero p.subtitle {
+                font-size: 1.2rem;
+            }
+            .service-pillars {
+                flex-direction: column;
+            }
+            .cta-group a {
+                display: block;
+                margin: 0.75rem 0;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Responsive navbar-->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-5">
-            <a class="navbar-brand" href="#!">Code1001</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
-                </ul>
+
+    <header>
+        <div class="container">
+            <!-- Stylized Text Logo for Tech Aesthetic -->
+            <a href="#" class="logo">Code1001 / SecOps</a>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#why-us">Expertise</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Code1001: Your Pathway to ISO 27001 Certification and NIS 2 Resilience.</h1>
+            <p class="subtitle">Expert implementation, auditing, and continuous compliance management for critical infrastructure and digital service providers.</p>
+            
+            <p style="margin-bottom: 1.5rem; font-style: italic; color: #666;">Leveraging PECB certified expertise to transform regulatory risk into operational security.</p>
+
+            <div class="cta-group">
+                <a href="mailto:info@code1001.eu?subject=ISO%2027001%20Consultation" class="cta-primary">Start Your Compliance Assessment</a>
+                <a href="tel:+123456789" class="cta-secondary">Contact an Expert</a>
             </div>
         </div>
-    </nav> -->
-    <!-- Page Content-->
-    <div class="container px-4 px-lg-5">
-        <!-- Heading Row-->
-        <div class="row gx-4 gx-lg-5 align-items-center my-5">
-            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="assets/code1001.png" alt="..." />
-            </div>
-            <div class="col-lg-5">
-                <h1 class="font-weight-light">Empowering Innovation</h1>
-                <p>Our business acts as the vital connection between software developers and cloud vendors, simplifying
-                    the process of deploying state-of-the-art applications onto cloud platforms. Drawing upon our
-                    expertise in both software development and cloud infrastructure, we facilitate smooth integration,
-                    enhance performance, and negotiate beneficial contracts. By utilising our intermediary role, we
-                    enable developers to fully utilise the capabilities of cloud computing, while prioritising security
-                    and efficiency. Come join us in spearheading innovation and exploring fresh opportunities in the
-                    digital domain.
-                </p>
-                <!-- Jump to Contact Section-->
-                <a class="btn btn-primary" href="#contact">Contact Us</a>
-            </div>
-        </div>
-        <!-- Call to Action-->
-        <div class="card text-white bg-secondary my-5 py-4 text-center">
-            <div class="card-body">
-                <p class="text-white m-0">Ready to elevate your software deployment to new heights? Partner with us
-                    today to seamlessly integrate your applications onto advanced cloud platforms. Let's innovate
-                    together and unlock the full potential of cloud computing for your business. Get started now!</p>
-            </div>
-        </div>
-        <!-- Content Row-->
-        <div class="row gx-4 gx-lg-5">
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Protection</h2>
-                        <p class="card-text">Identifying vulnerabilities is paramount in safeguarding your digital
-                            assets. Our advanced solutions offer comprehensive vulnerability discovery, enabling you to
-                            pinpoint weaknesses in your systems and applications. Through rigorous scanning techniques
-                            and meticulous analysis, we provide insights to fortify your defences against potential
-                            threats and breaches. By staying vigilant and proactive in addressing vulnerabilities, we
-                            help bolster your cybersecurity posture and ensure the resilience of your digital
-                            infrastructure. Invest in security and peace of mind with our proactive approach to threat
-                            detection, empowering you to navigate the digital landscape with confidence and resilience.
-                        </p>
-                    </div>
-                    <!-- <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div> -->
+    </section>
+
+    <!-- PECB Credibility Bar -->
+    <section class="credibility-bar">
+        <div class="container">
+            <div class="badge-list">
+                <div class="badge-item">
+                    <img src="assets/badge-iso27001.png" alt="PECB ISO 27001 Lead Auditor Badge Placeholder">
+                    <strong>PECB Certified</strong>
+                    <p>ISO/IEC 27001 Lead Auditor</p>
+                    <small>(Ensuring implementation meets audit standards)</small>
                 </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Sovereignty</h2>
-                        <p class="card-text">Data sovereignty is fundamental to digital autonomy and security. Our
-                            solutions empower businesses to maintain control over their data, ensuring it is stored and
-                            processed in compliance with local regulations and privacy standards. With a focus on
-                            transparency and accountability, we provide robust frameworks and tools to safeguard
-                            sensitive information, mitigating risks associated with data breaches and regulatory
-                            non-compliance. By prioritising data sovereignty, businesses can build trust with customers,
-                            enhance operational resilience, and unlock the full potential of their digital assets.
-                            Partner with us to uphold data sovereignty principles and safeguard your business in an
-                            increasingly interconnected world.</p>
-                    </div>
-                    <!-- <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div> -->
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Cost</h2>
-                        <p class="card-text">Cost optimisation is the cornerstone of financial success in any business.
-                            Our innovative solutions leverage cutting-edge technology and strategic insights to
-                            streamline your expenses without compromising on quality or performance. With our tailored
-                            cost optimisation strategies, you can identify inefficiencies, optimise resource allocation,
-                            and maximise ROI across your organisation. Whether it's cloud cost management, procurement
-                            optimisation, or resource utilisation analysis, we've got you covered. Take control of your
-                            bottom line and unlock new opportunities for growth with our cost optimisation solutions.
-                            Let's optimise your costs and drive sustainable success together.</p>
-                    </div>
-                    <!-- <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div> -->
+                <div class="badge-item">
+                    <img src="assets/badge-nis2.png" alt="PECB NIS 2 Directive Implementer Badge Placeholder">
+                    <strong>PECB Certified</strong>
+                    <p>NIS 2 Directive Implementer</p>
+                    <small>(Guiding Essential and Important Entities to mandatory compliance)</small>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Contact Section-->
-    <div class="container px-4 px-lg-5" id="contact">
-        <div class="col-lg-10">
-            <h4 class="font-weight-light">Contact Us</h4>
-            <p>Our team is here to help you with any questions or concerns you may have. </p>
-            <!-- <p>
-                &#x2709 <a href="mailto:info@code1001.eu"> info@code1001.eu</a><br> &#x1F4DE +385 91 6123 390
-            </p> -->
-            <!-- insert image -->
-            <a href="mailto:info@code1001.eu">
-                <img src="assets/contact.png" alt="Code1001" style="width: 200px;">
-            </a>
-            <!-- <a class="btn btn-primary" href="#!">Call to Action!</a> -->
+    <!-- Core Services -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Specialized Compliance Services</h2>
+            
+            <div class="service-pillars">
+                
+                <!-- Pillar 1: ISO 27001 -->
+                <div class="pillar iso27001-pillar">
+                    <h3>ISO 27001 Certification Services</h3>
+                    <p style="margin-bottom: 1rem;">Achieve and maintain global standard information security certification, underpinned by Lead Auditor expertise.</p>
+                    <ul>
+                        <li><strong>Gap Analysis & Readiness:</strong> Precise assessment against Annex A controls.</li>
+                        <li><strong>ISMS Design & Implementation:</strong> Developing the structure for security management.</li>
+                        <li><strong>Internal Auditing:</strong> Pre-certification audits based on PECB Lead Auditor methodology.</li>
+                        <li><strong>Risk Management Frameworks:</strong> Context-specific risk assessment and treatment planning.</li>
+                    </ul>
+                </div>
+                
+                <!-- Pillar 2: NIS 2 Directive -->
+                <div class="pillar nis2-pillar">
+                    <h3>NIS 2 Directive Implementation</h3>
+                    <p style="margin-bottom: 1rem;">Mandatory cyber resilience and swift compliance for Essential and Important Entities.</p>
+                    <ul>
+                        <li><strong>Applicability & Scoping:</strong> Determining legal classification and defined scope.</li>
+                        <li><strong>Technical Measures (T-OMs):</strong> Implementing controls for resilience (e.g., encryption, incident handling).</li>
+                        <li><strong>Incident Response & Reporting:</strong> Establishing protocols for mandatory notification within tight deadlines.</li>
+                        <li><strong>Supply Chain Security:</strong> Auditing and establishing contractual security measures for suppliers.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="font-size: 1.3rem; font-weight: 700; color: var(--brand-primary);">INTEGRATED COMPLIANCE: Use ISO 27001's structure as the foundation to meet NIS 2's regulatory demands efficiently.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
+    <!-- Why Code1001 / Expertise -->
+    <section id="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Code1001 Expertise?</h2>
+            <div class="advantage-grid">
+                <div class="advantage-item">
+                    <h4>PECB Certified Authority</h4>
+                    <p>Our consultants hold the highest PECB credentials, providing implementation based on real-world audit experience, not just theoretical advice.</p>
+                </div>
+                <div class="advantage-item">
+                    <h4>Practical, Operation-First ISMS</h4>
+                    <p>We build security management systems that integrate into your operations, ensuring minimal disruption and maximum effectiveness against real threats.</p>
+                </div>
+                <div class="advantage-item">
+                    <h4>Focus on Legal Accountability</h4>
+                    <p>We guide management through the strict liability elements of NIS 2, establishing clear governance and documentation required by regulators.</p>
+                </div>
+                <div class="advantage-item">
+                    <h4>Rapid Remediation</h4>
+                    <p>Our technical background enables fast identification and implementation of required cyber security controls needed for NIS 2 and ISO 27001 Annex A.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-
-
-    <div style="height: 100px;"></div>
-
-    <!-- Footer-->
-    <footer class=" py-5 bg-dark">
-        <div class="container px-4 px-lg-5">
-            <p class="m-0 text-center text-white">Copyright &copy; Code1001 d.o.o. 2024</p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Code1001 Cybersecurity & Compliance. All Rights Reserved.</p>
+            <p>Certified Expertise: ISO 27001 Lead Auditor and NIS 2 Directive Implementer.</p>
         </div>
     </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-</body>
 
+</body>
 </html>
