@@ -305,27 +305,27 @@
     </style>
 
     <script>
-        function openSignal() {
-            // Attempt to open the Signal app
-            window.location.href = 'signal://send?handle=thenines.62';
+    function openSignal() {
+        // Attempt to open the Signal app
+        window.location.href = 'signal://send?handle=thenines.62';
 
-            // Set a timer (500ms). If the user is still on this page, the app failed to launch.
-            setTimeout(function() {
-                if (document.visibilityState === 'visible') {
-                    // If Signal failed to open, confirm redirection to the download page.
-                    const userConfirmed = confirm(
-                        "Signal failed to launch. This usually means the app is not installed or the handler is not registered.\n\n" +
-                        "Click OK to go to the Signal download page, or Cancel to stay here."
-                    );
-                    
-                    if (userConfirmed) {
-                        window.location.href = 'https://signal.org/download/'; 
-                    }
+        // Set a timer (500ms). If the user is still on this page, the app failed to launch.
+        setTimeout(function() {
+            if (document.visibilityState === 'visible') {
+                // If Signal failed to open, confirm redirection to the download page.
+                const userConfirmed = confirm(
+                    "Secure chat failed to open. Please ensure the Signal desktop app is running and your browser has permission to launch external applications.\n\n" +
+                    "Click OK to visit the Signal support page for troubleshooting, or Cancel to use another contact method."
+                );
+                
+                if (userConfirmed) {
+                    window.location.href = 'https://support.signal.org/'; 
                 }
-            }, 500);
-            return false;
-        }
-    </script>
+            }
+        }, 500);
+        return false;
+    }
+</script>
 </head>
 <body>
 
