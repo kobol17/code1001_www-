@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code1001: ISO 27001 Certification & NIS 2 Resilience Experts</title>
+    <title>Code1001: ISO 27001, ISO 42001 & NIS 2 Experts</title>
+
+    <!-- SEO METADATA -->
+    <meta name="description" content="Code1001 provides expert consulting and auditing for ISO 27001, NIS 2 Directive implementation, and ISO 42001 AI Management Systems (AIMS). Tri-certified PECB expertise for EU resilience and ethical AI governance.">
 
     <!-- FAVICON LINK (Assuming favicon.ico is in the repository root) -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -13,16 +16,17 @@
     
     <!-- Embedded CSS starts here -->
     <style>
-        /* --- COLOR PALETTE (Derived from Logo & Compliance Need) --- */
+        /* --- COLOR PALETTE (Unified) --- */
         :root {
-            --brand-primary: #1C2833;       /* Dark Slate (Background/Headers/Footer) */
-            --brand-accent-light: #4A90E2;  /* Cyan/Blue (Tech Accent) */
-            --tech-accent-magenta: #AA0066; /* Magenta/Pink */
-            --compliance-accent: #2ECC71;   /* Strong Green (Primary CTAs) */
+            --brand-primary: #1C2833;       /* Dark Slate */
+            --brand-accent-light: #4A90E2;  /* Cyan/Blue (NIS 2 Accent) */
+            --tech-accent-magenta: #AA0066; /* Magenta/Pink (ISO 42001 Accent / List Icons) */
+            --compliance-accent: #2ECC71;   /* Strong Green (ISO 27001 & Primary CTAs) */
             --text-color: #333;
             --dark-text: #1C2833;
             --light-bg: #F4F6F6; 
             --white: #ffffff;
+            --header-height: 60px; /* Define header height for scrolling fix */
         }
 
         * {
@@ -36,6 +40,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--white);
+            scroll-behavior: smooth; /* Added for smoother navigation jumps */
         }
 
         .container {
@@ -50,6 +55,10 @@
             color: var(--white);
             padding: 1rem 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky; /* Sticky header for better UX */
+            top: 0;
+            z-index: 1000;
+            height: var(--header-height);
         }
 
         header .container {
@@ -58,7 +67,7 @@
             align-items: center;
         }
         
-        /* Stylized Text Logo for Navigation (MATCHING LOGO FONT STYLE) */
+        /* Stylized Text Logo for Navigation */
         .logo {
             font-family: 'Aldrich', sans-serif; 
             font-size: 1.6rem;
@@ -89,6 +98,21 @@
             border-bottom: 2px solid var(--brand-accent-light); 
         }
 
+        /* --- Anchor Scroll Fix --- */
+        section {
+            position: relative;
+        }
+        section::before {
+            content: "";
+            display: block;
+            height: var(--header-height); 
+            margin-top: calc(-1 * var(--header-height));
+            visibility: hidden;
+            pointer-events: none;
+        }
+        /* --- End Anchor Scroll Fix --- */
+
+
         /* --- Hero Section --- */
         #hero {
             padding: 5rem 0 3rem; 
@@ -96,7 +120,6 @@
             text-align: center;
         }
         
-        /* Logo Image Styling for Hero Section (Light Background) */
         .hero-logo img {
             max-width: 350px; 
             height: auto;
@@ -120,14 +143,17 @@
 
         .cta-group a {
             display: inline-block;
-            padding: 0.8rem 2.5rem; /* Reverting to larger padding for two main buttons */
+            padding: 0.8rem 2.5rem; 
             margin: 0 0.5rem; 
             border-radius: 5px;
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .cta-group a:active {
+            transform: scale(0.98);
         }
 
         /* Primary CTA uses Compliance Green */
@@ -148,8 +174,6 @@
             color: var(--white);
         }
 
-        /* Removed .cta-tertiary style */
-
 
         /* --- Badge Credibility Bar --- */
         .credibility-bar {
@@ -160,7 +184,7 @@
         .badge-list {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 30px; 
             flex-wrap: wrap;
         }
         .badge-item {
@@ -169,20 +193,38 @@
             max-width: 250px;
         }
         .badge-item img {
-            width: 120px;
-            height: 120px;
+            width: 100px; 
+            height: 100px;
             background: var(--white);
             border-radius: 50%;
             margin-bottom: 10px;
             object-fit: contain;
-            border: 4px solid var(--compliance-accent); /* Green border for authority */
+            /* Default: ISO 27001 (Green) */
+            border: 4px solid var(--compliance-accent); 
         }
         .badge-item strong {
             display: block;
             margin-top: 0.5rem;
-            font-size: 1rem;
-            color: var(--brand-accent-light); /* Cyan text */
+            font-size: 0.9rem;
+            color: var(--compliance-accent); 
         }
+        
+        /* NIS 2 Styling (Cyan) */
+        .badge-item.nis2-badge img {
+            border-color: var(--brand-accent-light);
+        }
+        .badge-item.nis2-badge strong {
+            color: var(--brand-accent-light);
+        }
+
+        /* ISO 42001 Styling (Magenta) */
+        .badge-item.ai-badge img {
+            border-color: var(--tech-accent-magenta);
+        }
+        .badge-item.ai-badge strong {
+            color: var(--tech-accent-magenta); 
+        }
+
 
         /* --- Services Section --- */
         #services {
@@ -201,7 +243,7 @@
 
         .service-pillars {
             display: flex;
-            gap: 30px;
+            gap: 20px; 
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -212,8 +254,17 @@
             background: var(--white);
             padding: 2rem;
             border-radius: 8px;
-            border-top: 5px solid var(--compliance-accent); /* Highlight with compliance green */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            /* Default border (ISO 27001) */
+            border-top: 5px solid var(--compliance-accent); 
+        }
+        /* NIS 2 Pillar Border (Cyan) */
+        .pillar.nis2-pillar {
+            border-top: 5px solid var(--brand-accent-light);
+        }
+        /* AI Pillar Border (Magenta) */
+        .pillar.ai-pillar {
+            border-top: 5px solid var(--tech-accent-magenta);
         }
 
         .pillar h3 {
@@ -278,8 +329,19 @@
         footer p {
             margin-bottom: 5px;
         }
+        .footer-contact-item strong {
+            font-weight: 700;
+            color: var(--white); /* Ensure contrast */
+            margin-right: 5px;
+        }
 
         /* --- Responsiveness --- */
+        @media (max-width: 1000px) {
+            .badge-item img {
+                width: 120px; 
+                height: 120px;
+            }
+        }
         @media (max-width: 768px) {
             #hero h1 {
                 font-size: 2rem;
@@ -296,8 +358,6 @@
             }
         }
     </style>
-
-    <!-- NO JAVASCRIPT REQUIRED -->
 </head>
 <body>
 
@@ -323,74 +383,87 @@
                 <img src="assets/logo-code1001.png" alt="Code1001 Logo">
             </div>
 
-            <h1>Your Pathway to ISO 27001 Certification and NIS 2 Resilience.</h1>
-            <p class="subtitle">Expert implementation, auditing, and continuous compliance management for critical infrastructure.</p>
+            <h1>Your Pathway to ISO 27001, ISO 42001 & NIS 2 Resilience.</h1>
+            <p class="subtitle">Expert implementation, auditing, and continuous compliance management for critical infrastructure and AI service providers.</p>
             
-            <p style="margin-bottom: 1.5rem; font-style: italic; color: #666;">Leveraging PECB certified expertise to transform regulatory risk into operational security.</p>
+            <p style="margin-bottom: 1.5rem; font-style: italic; color: #666;">Leveraging PECB certified expertise to transform regulatory risk into operational security and ethical AI governance.</p>
 
             <div class="cta-group">
-                <a href="mailto:info@code1001.eu?subject=Compliance%20Assessment" class="cta-primary">Start Your Compliance Assessment</a>
-                <a href="tel:+385916123390" class="cta-secondary">Call an Expert</a>
-                
-                <!-- Removed Signal button -->
+                <a href="mailto:info@code1001.eu?subject=Compliance%20Assessment" class="cta-primary" aria-label="Start Your Compliance Assessment via Email">Start Your Compliance Assessment</a>
+                <a href="tel:+385916123390" class="cta-secondary" aria-label="Call Expert Phone Number">Call an Expert</a>
             </div>
         </div>
     </section>
 
-    <!-- PECB Credibility Bar -->
+    <!-- PECB Credibility Bar (Three Badges) -->
     <section class="credibility-bar">
         <div class="container">
             <div class="badge-list">
+                <!-- 1. ISO 27001 (Green Accent) -->
                 <div class="badge-item">
                     <img src="assets/badge-iso27001.png" alt="PECB ISO 27001 Lead Auditor Badge Placeholder">
                     <strong>PECB Certified</strong>
                     <p>ISO/IEC 27001 Lead Auditor</p>
-                    <small>(Ensuring implementation meets audit standards)</small>
                 </div>
-                <div class="badge-item">
+                <!-- 2. ISO 42001 (Magenta Accent) -->
+                <div class="badge-item ai-badge">
+                    <img src="assets/badge-iso42001.png" alt="PECB ISO 42001 Lead Implementer Badge Placeholder">
+                    <strong>PECB Certified</strong>
+                    <p>ISO/IEC 42001 Lead Implementer</p>
+                </div>
+                <!-- 3. NIS 2 (Cyan Accent) -->
+                <div class="badge-item nis2-badge">
                     <img src="assets/badge-nis2.png" alt="PECB NIS 2 Directive Implementer Badge Placeholder">
                     <strong>PECB Certified</strong>
                     <p>NIS 2 Directive Implementer</p>
-                    <small>(Guiding Essential and Important Entities to mandatory compliance)</small>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Core Services -->
+    <!-- Core Services (Three Pillars - Reordered) -->
     <section id="services">
         <div class="container">
             <h2 class="section-title">Specialized Compliance Services</h2>
             
             <div class="service-pillars">
                 
-                <!-- Pillar 1: ISO 27001 -->
+                <!-- Pillar 1: ISO 27001 (Foundational Security - Green Accent) -->
                 <div class="pillar iso27001-pillar">
-                    <h3>ISO 27001 Certification Services</h3>
+                    <h3>ISO 27001 Certification</h3>
                     <p style="margin-bottom: 1rem;">Achieve and maintain global standard information security certification, underpinned by Lead Auditor expertise.</p>
                     <ul>
-                        <li><strong>Gap Analysis & Readiness:</strong> Precise assessment against Annex A controls.</li>
-                        <li><strong>ISMS Design & Implementation:</strong> Policy development, risk treatment, and Statement of Applicability (SoA).</li>
+                        <li><strong>ISMS Design & Implementation:</strong> Policy development, risk treatment, and SoA.</li>
                         <li><strong>Internal Auditing:</strong> Pre-certification audits based on PECB Lead Auditor methodology.</li>
-                        <li><strong>Continuous Maintenance:</strong> Support for annual surveillance audits and ISMS maturity improvement.</li>
+                        <li><strong>Continuous Maintenance:</strong> Support for annual surveillance audits.</li>
                     </ul>
                 </div>
                 
-                <!-- Pillar 2: NIS 2 Directive -->
+                <!-- Pillar 2: ISO 42001 (AI Governance - Magenta Accent) -->
+                <div class="pillar ai-pillar">
+                    <h3>ISO 42001 AIMS Implementation</h3>
+                    <p style="margin-bottom: 1rem;">Establish responsible AI development and deployment through certified AI Management Systems (AIMS).</p>
+                    <ul>
+                        <li><strong>AI Risk Assessment:</strong> Identifying risks related to fairness, transparency, and accountability.</li>
+                        <li><strong>AIMS Development:</strong> Implementing policies for responsible AI (AIMS - Annex B controls).</li>
+                        <li><strong>EU AI Act Readiness:</strong> Using 42001 as the foundational framework for future High-Risk AI compliance.</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3: NIS 2 Directive (Mandatory Regulation - Cyan Accent) -->
                 <div class="pillar nis2-pillar">
                     <h3>NIS 2 Directive Implementation</h3>
                     <p style="margin-bottom: 1rem;">Mandatory cyber resilience and swift compliance for Essential and Important Entities.</p>
                     <ul>
-                        <li><strong>Applicability & Scoping:</strong> Determining legal classification and defined scope of the Directive.</li>
-                        <li><strong>Technical Measures (T-OMs):</strong> Implementing mandatory controls (e.g., encryption, incident handling, access control).</li>
-                        <li><strong>Incident Response & Reporting:</strong> Establishing protocols for mandatory notification within tight deadlines.</li>
-                        <li><strong>Supply Chain Security:</strong> Auditing and establishing contractual security measures for critical suppliers.</li>
+                        <li><strong>Applicability & Scoping:</strong> Determining legal classification and defined scope.</li>
+                        <li><strong>Technical Measures (T-OMs):</strong> Implementing mandatory controls (e.g., incident handling, access control).</li>
+                        <li><strong>Incident Response & Reporting:</strong> Protocols for mandatory notification within tight deadlines.</li>
                     </ul>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 3rem;">
-                <p style="font-size: 1.3rem; font-weight: 700; color: var(--brand-primary);">INTEGRATED COMPLIANCE: Use ISO 27001's structure as the foundation to meet NIS 2's regulatory demands efficiently.</p>
+                <p style="font-size: 1.3rem; font-weight: 700; color: var(--brand-primary);">INTEGRATED COMPLIANCE: We build security, regulation, and AI governance into one efficient system.</p>
             </div>
         </div>
     </section>
@@ -401,20 +474,20 @@
             <h2 class="section-title">Why Choose Code1001 Expertise?</h2>
             <div class="advantage-grid">
                 <div class="advantage-item">
-                    <h4>PECB Certified Authority</h4>
-                    <p>Our consultants hold the highest PECB credentials, providing implementation based on real-world audit experience, not just theoretical advice.</p>
+                    <h4>Tri-Certified Authority</h4>
+                    <p>Our consultants hold high-level credentials across Information Security (27001), EU Regulation (NIS 2), and AI Governance (42001).</p>
                 </div>
                 <div class="advantage-item">
-                    <h4>Practical, Operation-First ISMS</h4>
-                    <p>We build security management systems that integrate into your operations, ensuring minimal disruption and maximum effectiveness against real threats.</p>
+                    <h4>Integrated Risk Management</h4>
+                    <p>We streamline compliance efforts, ensuring that ISMS controls, NIS 2 measures, and AIMS requirements are mutually supportive, reducing cost and complexity.</p>
                 </div>
                 <div class="advantage-item">
                     <h4>Focus on Legal Accountability</h4>
-                    <p>We guide management through the strict liability elements of NIS 2, establishing clear governance and documentation required by regulators.</p>
+                    <p>We guide management through the strict liability elements of NIS 2 and emerging AI legislation, establishing clear governance required by regulators.</p>
                 </div>
                 <div class="advantage-item">
-                    <h4>Cyber-First Remediation</h4>
-                    <p>Our deep technical background enables fast identification and implementation of required cyber security controls needed for NIS 2 and ISO 27001 Annex A.</p>
+                    <h4>Operation-First Implementation</h4>
+                    <p>We build systems that integrate into your technical operations, ensuring minimal disruption and maximum effectiveness against real threats, whether cyber or ethical.</p>
                 </div>
             </div>
         </div>
@@ -422,10 +495,10 @@
 
     <footer>
         <div class="container">
-            <p>Secure Contact (Signal): <a href="signal://send?handle=thenines.62">@thenines.62</a></p>
-            <p>Phone: +385 91 612 3390</p>
+            <p class="footer-contact-item"><strong>Secure Contact (Signal):</strong> <a href="signal://send?handle=thenines.62">@thenines.62</a></p>
+            <p class="footer-contact-item"><strong>Phone:</strong> +385 91 612 3390</p>
             <p>&copy; 2025 Code1001 Cybersecurity & Compliance. All Rights Reserved.</p>
-            <p>Certified Expertise: ISO 27001 Lead Auditor and NIS 2 Directive Implementer.</p>
+            <p>Certified Expertise: ISO 27001, NIS 2, & ISO 42001.</p>
         </div>
     </footer>
 
