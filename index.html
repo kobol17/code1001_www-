@@ -8,7 +8,7 @@
     <!-- SEO METADATA -->
     <meta name="description" content="Code1001 provides expert PECB consulting for ISO 27001, NIS 2 Directive implementation, and ISO 42001 (AIMS). Based in Rijeka, Croatia, we offer tri-certified expertise for global cyber resilience and ethical AI governance.">
 
-    <!-- OPEN GRAPH -->
+    <!-- OPEN GRAPH (Social Sharing) -->
     <meta property="og:title" content="Code1001 | ISO 27001, NIS 2 & AI Governance Experts">
     <meta property="og:description" content="Expert implementation and auditing led by Frane Karaman. ISO 27001, NIS 2, and ISO 42001 AI Management Systems.">
     <meta property="og:image" content="assets/logo-code1001.webp">
@@ -17,7 +17,7 @@
 
     <link rel="canonical" href="https://code1001.eu/" />
 
-    <!-- MODERN FAVICONS (Restored) -->
+    <!-- MODERN FAVICONS -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -29,9 +29,11 @@
     
     <!-- SMART LANGUAGE REDIRECTION SCRIPT -->
     <script>
+        // Check if we have already redirected this session to avoid infinite loops
         if (!sessionStorage.getItem('language_redirected')) {
             const userLang = navigator.language || navigator.userLanguage;
             if (userLang.toLowerCase().includes('hr')) {
+                // Mark as redirected so it doesn't happen again if they click 'EN' manually
                 sessionStorage.setItem('language_redirected', 'true');
                 window.location.replace('hr.html');
             }
@@ -110,11 +112,11 @@
             font-size: 1.6rem; font-weight: 700;
             color: var(--brand-accent-light); 
             text-decoration: none; 
-            /* Text-transform removed */
+            /* Text-transform removed for mixed case */
         }
         .logo-descriptor { color: var(--compliance-accent); font-size: 0.9em; margin-left: 5px; font-family: 'Roboto', sans-serif; }
 
-        /* FIXED: Added flex-shrink and alignment to prevent wrapping */
+        /* Header Layout Fixes */
         header nav { display: flex; align-items: center; flex-shrink: 0; }
         
         header nav a {
@@ -126,7 +128,6 @@
         }
         header nav a:hover { color: var(--brand-accent-light) !important; border-bottom: 2px solid var(--brand-accent-light); }
         
-        /* FIXED: Layout for language switcher */
         .lang-switcher {
             font-size: 0.9em; margin-left: 20px; padding-left: 10px;
             border-left: 1px solid rgba(255, 255, 255, 0.3);
@@ -230,12 +231,21 @@
         footer p { margin-bottom: 5px; }
         .footer-contact-item strong { font-weight: 700; color: var(--white); margin-right: 5px; }
 
+        /* --- MOBILE FIXES --- */
         @media (max-width: 768px) {
+            /* Fix 1: Hide "Compliance" text to fit screen */
+            .logo-descriptor { display: none; }
+            
+            /* Fix 2: Adjust spacing */
+            header .container { padding: 0 15px; }
+            header nav a { margin-left: 10px; font-size: 0.85rem; }
+            .lang-switcher { margin-left: 10px; padding-left: 10px; font-size: 0.85rem; }
+            
+            /* General mobile sizing */
             #hero h1 { font-size: 2rem; }
             .cta-group a { display: block; margin: 0.5rem auto; }
             .service-pillars, .profile-content { flex-direction: column; text-align: center; }
             .profile-image-container { width: 80%; max-width: 300px; margin: 0 auto; }
-            .lang-switcher { margin-left: 10px; padding-left: 10px; }
         }
     </style>
 </head>
@@ -243,7 +253,6 @@
 
     <header>
         <div class="container">
-            <!-- LOGO FIXED: Matches HR version -->
             <a href="#" class="logo">Code1001<span class="logo-descriptor">| Compliance</span></a>
             <nav>
                 <a href="#services">Services</a>
@@ -386,7 +395,6 @@
             <p class="footer-contact-item"><strong>Secure Contact (Signal):</strong> <a href="signal://send?handle=thenines.62">@thenines.62</a></p>
             <p class="footer-contact-item"><strong>Phone:</strong> +385 91 612 3390</p>
             
-            <!-- LINKEDIN -->
             <p class="footer-contact-item">
                 <strong>LinkedIn:</strong> 
                 <a href="https://www.linkedin.com/in/frane-karaman" target="_blank" rel="noopener noreferrer">View Profile</a>
@@ -397,7 +405,6 @@
             
             <p>Certified Expertise: ISO 27001, NIS 2, & ISO 42001.</p>
             
-            <!-- PRIVACY LINKS -->
             <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">
                 <a href="privacy.html" style="color: var(--white); text-decoration: underline;">Privacy Policy</a> | 
                 <a href="privacy.html" style="color: var(--white); text-decoration: underline;">Legal Notice</a>
